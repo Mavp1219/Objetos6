@@ -38,11 +38,11 @@ public class Cafetera {
     }
 
     public Cafetera(int capM, int cantA) {
-        this.capM = capM;
-        this.cantA = cantA;
-        if (this.cantA > this.capM) {
-            this.cantA = this.capM;
-            JOptionPane.showMessageDialog(null, "La capacidad de la cafetera se a igualado a la capacidad maxima", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+       this.capM = capM;
+        if (cantA > capM) {
+            this.cantA = capM;
+        } else {
+            this.cantA = cantA;
         }
     }
 
@@ -52,8 +52,7 @@ public class Cafetera {
     
      
        public void Vaciar_Cafetera() {
-        this.cantA = 0;
-        this.capM = this.getCapM();
+        this.setCantA(0);
     }
 
        
