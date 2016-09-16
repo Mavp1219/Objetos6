@@ -77,11 +77,23 @@ public class principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Capacidad actual:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 84, 110, 30));
-        jPanel1.add(txtcapacidadactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 140, 30));
+
+        txtcapacidadactual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcapacidadactualKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtcapacidadactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 150, 30));
 
         jLabel4.setText("Capacidad maxima:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 124, 100, 20));
-        jPanel1.add(txtcapacidadmaxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 140, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 120, 30));
+
+        txtcapacidadmaxima.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcapacidadmaximaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtcapacidadmaxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 140, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Opciones de la cafetera: ");
@@ -106,11 +118,23 @@ public class principal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Numero de tazas a servir:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 150, 30));
+
+        txtnumtazas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnumtazasKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtnumtazas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 110, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Cantidad café:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 100, 30));
+
+        txtcafe2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcafe2KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtcafe2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 170, 30));
 
         cmdservir.setText("Servir");
@@ -152,6 +176,12 @@ public class principal extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Cantidad café:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 100, 30));
+
+        txtcafe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcafeKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtcafe, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 110, 30));
 
         cmdagregar1.setText("Agregarlo");
@@ -166,6 +196,7 @@ public class principal extends javax.swing.JFrame {
         jLabel10.setText("Servir Taza de café:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 110, 20));
 
+        txtdatos.setEditable(false);
         txtdatos.setColumns(20);
         txtdatos.setRows(5);
         jScrollPane1.setViewportView(txtdatos);
@@ -181,6 +212,7 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdaplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdaplicarActionPerformed
+       try{
         if (txtcapacidadactual.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "La capcidad actual de la caferea esta vacia, llenela", "Error", JOptionPane.ERROR_MESSAGE);
             txtcapacidadactual.selectAll();
@@ -202,7 +234,13 @@ public class principal extends javax.swing.JFrame {
             txtcapacidadactual.setText("");
             txtcapacidadmaxima.setText("");
         }
-
+       }catch(NullPointerException e){
+           JOptionPane.showMessageDialog(this, "Error");
+           txtcapacidadactual.requestFocusInWindow();
+       }catch (NumberFormatException e){
+         JOptionPane.showMessageDialog(this, "Error");
+         txtcapacidadactual.requestFocusInWindow();
+       }
     }//GEN-LAST:event_cmdaplicarActionPerformed
 
     private void cmdrestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdrestaurarActionPerformed
@@ -215,6 +253,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdrestaurarActionPerformed
 
     private void cmdllenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdllenarActionPerformed
+       try{
         int select;
         select = JOptionPane.showConfirmDialog(this, "Desea llenar la cafetera?", "Informacion", JOptionPane.YES_NO_OPTION);
         if (select == 0) {
@@ -223,13 +262,30 @@ public class principal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se han establecido las capacidades");
         }
+       }catch(NullPointerException e){
+           JOptionPane.showMessageDialog(this, "Error");
+           txtcapacidadactual.requestFocusInWindow();
+       }catch (NumberFormatException e){
+         JOptionPane.showMessageDialog(this, "Error");
+         txtcapacidadactual.requestFocusInWindow();
+       }
     }//GEN-LAST:event_cmdllenarActionPerformed
 
     private void cmdmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdmostrarActionPerformed
+        try {
         txtdatos.setText("Su capacidad actual es de: " + C.getCantA() + "\nSu capacidad maxima es de: " + C.getCapM());
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "Error");
+           txtcapacidadactual.requestFocusInWindow();
+       }catch (NumberFormatException e){
+           JOptionPane.showMessageDialog(this, "Error");
+         txtcapacidadactual.requestFocusInWindow();
+       }
     }//GEN-LAST:event_cmdmostrarActionPerformed
 
     private void cmdvaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdvaciarActionPerformed
+
+       try {
         int select;
         select = JOptionPane.showConfirmDialog(this, "Desea vaciar la cafetera?", "Informacion", JOptionPane.YES_NO_OPTION);
         if (select == 0) {
@@ -238,9 +294,17 @@ public class principal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se ha Vaciado la cafetera");
         }
+       }catch(NullPointerException e){
+           JOptionPane.showMessageDialog(this, "Error");
+           txtcapacidadactual.requestFocusInWindow();
+       }catch (NumberFormatException e){
+           JOptionPane.showMessageDialog(this, "Error");
+         txtcapacidadactual.requestFocusInWindow();
+       }
     }//GEN-LAST:event_cmdvaciarActionPerformed
 
     private void cmdagregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdagregar1ActionPerformed
+       try{
         if (txtcafe.getText().trim().isEmpty()) {
             txtdatos.setText("No a agregado cafe a la cafetera");
             txtcafe.selectAll();
@@ -255,10 +319,18 @@ public class principal extends javax.swing.JFrame {
                 txtdatos.setText("Su capacidad en actual ahora es de:" + C.getCantA());
             }
         }
+       }catch(NullPointerException e){
+           JOptionPane.showMessageDialog(this, "Elementos vacios");
+           txtcapacidadactual.requestFocusInWindow();
+       }catch (NumberFormatException e){
+         JOptionPane.showMessageDialog(this, "Escriba bien las cantidades");
+         txtcapacidadactual.requestFocusInWindow();
+       }
     }//GEN-LAST:event_cmdagregar1ActionPerformed
 
     private void cmdservirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdservirActionPerformed
-       if(txtcafe2.getText().trim().isEmpty()){
+try{
+        if(txtcafe2.getText().trim().isEmpty()){
            txtdatos.setText("Ingrese la cantidad de cafe");
            txtcafe2.requestFocusInWindow();
        }else if(txtnumtazas.getText().trim().isEmpty()){
@@ -281,10 +353,55 @@ public class principal extends javax.swing.JFrame {
                C.Servir_Tazas(cc, ct);
                     txtdatos.setText("Taza servida, su cantidad de café es de: "+ C.getCantA());
            }
-               
-           
+       }
+}catch(NullPointerException e){
+           JOptionPane.showMessageDialog(this, "Error");
+           txtcapacidadactual.requestFocusInWindow();
+       }catch (NumberFormatException e){
+         JOptionPane.showMessageDialog(this, "Error");
+         txtcapacidadactual.requestFocusInWindow();
        }
     }//GEN-LAST:event_cmdservirActionPerformed
+
+    private void txtcapacidadactualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcapacidadactualKeyTyped
+       char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcapacidadactualKeyTyped
+
+    private void txtcapacidadmaximaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcapacidadmaximaKeyTyped
+   char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcapacidadmaximaKeyTyped
+
+    private void txtcafeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcafeKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcafeKeyTyped
+
+    private void txtcafe2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcafe2KeyTyped
+       char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcafe2KeyTyped
+
+    private void txtnumtazasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumtazasKeyTyped
+       char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtnumtazasKeyTyped
 
     /**
      * @param args the command line arguments
