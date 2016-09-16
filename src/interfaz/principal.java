@@ -292,7 +292,7 @@ public class principal extends javax.swing.JFrame {
                 if (C.getCantA() == C.getCapM()) {
                     txtdatos.setText("La capacidad actual esta al maximo");
                 } else {
-                    C.AgregarCafeC(ac);
+                    C.AgregarCafe(ac);
                     txtdatos.setText("Su capacidad actual ahora es de:" + C.getCantA());
                 }
             }

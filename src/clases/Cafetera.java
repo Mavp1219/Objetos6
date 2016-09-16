@@ -50,8 +50,7 @@ public class Cafetera {
         this.cantA = this.capM;
     }
     
-    
-    
+     
        public void Vaciar_Cafetera() {
         this.cantA = 0;
         this.capM = this.getCapM();
@@ -71,19 +70,8 @@ public class Cafetera {
 
     
     
-    public void AgregarCafeC(int cantidad) {
-        int aux;
-        if (cantidad > getCapM()) {
-            this.cantA = this.capM;
-        } else {
-            aux = getCantA() + cantidad;
-            if (aux > getCapM()) {
-                JOptionPane.showMessageDialog(null, "No se puede agregar más cafe a la cafetera", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                this.cantA = aux;
-            }
-        }
+    public void AgregarCafe(int cantidad) {
+        this.setCantA(this.getCantA() + cantidad);
     }
-
-
+ 
 }
